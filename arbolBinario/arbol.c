@@ -43,9 +43,13 @@ void amplitud(Arbol raiz)
     }
   }
 }
-// 
-// Recorridos en profundidad "recursivos"
-//
+
+/*
+***************************************
+* RECORRIDOS EN PROFUNIDAD RECURSIVOS *
+***************************************
+*/
+
 void preOrden(Arbol raiz)
 { if (raiz!=NULL)
   { printf("%c ",raiz->info);

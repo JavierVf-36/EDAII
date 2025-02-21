@@ -69,7 +69,7 @@ tipoNodo * colaSuprime(Cola *c){
         c->fondo = NULL;
     }
 
-    // free(aBorrar); // Esta linea hace "double free or corruption (out)"
+    free(aBorrar);
     return elemento;
 }
 
