@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pila.h"
-//PATATA
+
 int pilaCreaVacia(Pila *p){
     (*p)=NULL;
     return 1;
