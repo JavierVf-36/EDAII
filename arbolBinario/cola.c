@@ -3,7 +3,6 @@
 #include "cola.h"
 
 int colaCreaVacia(Cola *c){
-    c=malloc(sizeof(Cola));
     if(c==NULL){
         return 1;
     }
@@ -16,7 +15,7 @@ int colaCreaVacia(Cola *c){
 int colaVacia(Cola *c){
 
     if(c==NULL){
-        return 0;
+        return 1;
     }
 
     if(c->fondo==NULL&&c->frente==NULL){

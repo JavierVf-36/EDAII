@@ -7,13 +7,13 @@ int main(void)
 { Arbol varArbol;
 
 /* Creación arbol ejemplo de las transparencias de recorridos */
-  varArbol = creaNodo('A');
-  varArbol->izq=creaNodo('B');
-  varArbol->der = creaNodo('C');
-  varArbol->izq->izq=creaNodo('D');
-  varArbol->izq->der=creaNodo('E');
-  varArbol->der->izq=creaNodo('F');
-  varArbol->der->der=creaNodo('G');
+  varArbol = creaNodo('G');
+  varArbol->izq=creaNodo('A');
+  varArbol->der = creaNodo('Y');
+  varArbol->izq->izq=creaNodo('A');
+  varArbol->izq->der=creaNodo('D');
+  varArbol->der->izq=creaNodo('R');
+  varArbol->der->der=creaNodo('I');
 
 /* Aplicación de recorridos al arbol ejemplo */
 

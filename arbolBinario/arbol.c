@@ -29,19 +29,18 @@ void amplitud(Arbol raiz)
   tipoNodo * actual;
   colaCreaVacia(&c);
   if(raiz!=NULL){
-    int exito=colaInserta(&c,raiz);
+    colaInserta(&c,raiz);
   }
 
   while(!colaVacia(&c)){
     actual=colaSuprime(&c);
-    printf("%p",actual);
-    //printf("%c ",actual->info);
-    //if(actual->izq!=NULL){
-    //  colaInserta(&c,actual->izq);
-    //}
-    //if(actual->der!=NULL){
-    //  colaInserta(&c,actual->der);
-    //}
+    printf("%c ",actual->info);
+    if(actual->izq!=NULL){
+      colaInserta(&c,actual->izq);
+    }
+    if(actual->der!=NULL){
+      colaInserta(&c,actual->der);
+    }
   }
 }
 // 
