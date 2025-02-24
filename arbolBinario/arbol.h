@@ -30,5 +30,6 @@ Arbol buscarMax(Arbol raiz);
 Arbol buscarMin(Arbol raiz);
 int similares(Arbol r1,Arbol r2);
 int equivalentes(Arbol r1,Arbol r2);
+int amplitudEquivalente(Arbol raiz1, Arbol raiz2);
 Arbol especular(Arbol raiz);
 #endif
