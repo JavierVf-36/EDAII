@@ -3,19 +3,21 @@
 #include "arbol.h"
 #include "genArbol.h"
 
+int evaluar(Arbol);
+
 int main(void)
 { Arbol arbol; 
   char ex_postfija[10];
 
-/* Generación del árbol algebraico */
-  strcpy(ex_postfija,"AB+CDE+**\0");
+/* Generaciï¿½n del ï¿½rbol algebraico */
+  strcpy(ex_postfija,"23+713+**\0");
 
   arbol = genArbol(ex_postfija);
 
 /* Recorrido en amplitud o por niveles */
    amplitud(arbol);
 
-/* Aplicación de algunas operaciones y recorridos al árbol ejemplo */
+/* Aplicaciï¿½n de algunas operaciones y recorridos al ï¿½rbol ejemplo */
 
 
   printf("Recorrido en PRE_ORDEN: ");
@@ -28,21 +30,21 @@ int main(void)
   printf("Recorrido en POST_ORDEN: ");
   postOrden(arbol);
   printf("\n");
-  printf("Debe coinicidir con la expresión postfija inicial\n");
+  printf("Debe coinicidir con la expresion postfija inicial\n");
 
-  printf("El árbol tiene %d nodos \n", numNodos(arbol));
+  printf("El arbol tiene %d nodos \n", numNodos(arbol));
   printf("y altura: %d\n",altura(arbol));
 
-  printf("El árbol tiene %d nodos\n", numNodos(arbol));
-  arbol = Anula(arbol);
-  printf("Después de anula el arbol queda vacio, por tanto la altura será 0.\n");
-  if (altura(arbol)!=-1)		// Cuidado con definición de altura
-     printf("El árbol no se ha anulado correctamente\n");
+  printf("El arbol tiene %d nodos ", numNodos(arbol));
+  arbol = anula(arbol);
+  printf("Despues de anula el arbol queda vacio, por tanto la altura sera 0.\n");
+  if (altura(arbol)!=0)		// Cuidado con definiciï¿½n de altura
+     printf("El arbol no se ha anulado correctamente\n");
   else
-     printf("O.K. Parece que la operación anula funciona!!!\n");
+     printf("O.K. Parece que la operacion anula funciona!!!\n");
 
 
-/* Evaluación de un árbol algebraico: operandos entre '0' y '9'*/
+/* Evaluaciï¿½n de un ï¿½rbol algebraico: operandos entre '0' y '9'*/
 
   strcpy(ex_postfija,"23+713+**\0");
   arbol = genArbol(ex_postfija);
@@ -60,4 +62,36 @@ int main(void)
 /* Aplicar a este arbol las funciones del ejercicio 2 */
 
   return 1;
+}
+
+int evaluar(Arbol raiz)
+{
+  int resultado=0;
+  int valorIzq, valorDer;
+  if(raiz!=NULL)
+  {
+    if(raiz->izq==NULL&&raiz->der==NULL)
+    {
+      resultado=raiz->info-'0';
+    }
+    else
+    {
+      valorIzq=evaluar(raiz->izq);
+      valorDer=evaluar(raiz->der);
+
+      switch(raiz->info)
+      {
+        case '+':
+          resultado=valorIzq+valorDer;
+          break;
+        case '-':
+          resultado=valorIzq-valorDer;
+          break;
+        case '*':
+          resultado=valorIzq*valorDer;
+          break;
+      }
+    }
+  }
+  return resultado;
 }

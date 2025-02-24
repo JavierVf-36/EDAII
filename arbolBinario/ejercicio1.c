@@ -125,7 +125,7 @@ int main(void)
     printf("No existe.\n");
   }
   
-  printf("\n")
+  printf("\n");
 
   if(anula(varArbol)==NULL){
     printf("Anulado con exito.\n"); 
