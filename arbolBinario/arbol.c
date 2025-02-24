@@ -72,5 +72,124 @@ void postOrden(Arbol raiz)
   }
 }
 
+/*
+*************************
+* FUNCIONES EJERCICIO 2 *
+*************************
+*/
 
+int altura(Arbol raiz)
+{
+  if(raiz!=NULL){
+    int resIzq=altura(raiz->izq);
+    int resDer=altura(raiz->der);
+    if(resIzq==resDer){
+      return resIzq+1;
+      //PODRIA VALER EL DE LA DERECHA
+    }else if(resIzq>resDer){
+      return resIzq+1;
+    }else if(resDer>resIzq){
+      return resDer+1;
+    }
+  }else{
+    return 0;
+  }
+}
 
+int numNodos(Arbol raiz)
+{
+  if(raiz!=NULL)
+  {
+    int resIzq=numNodos(raiz->izq);
+    int resDer=numNodos(raiz->der);
+    if(resIzq==0&&resDer==0)
+    {
+      return 1;
+    }else
+    {
+      return resIzq+resDer+1;
+    }
+   
+  }else
+  {
+    return 0;
+  }
+}
+
+Arbol anula(Arbol raiz)
+{
+  if(raiz!=NULL)
+  {
+    Arbol hojaIzq=anula(raiz->izq);
+    Arbol hojaDer=anula(raiz->der);
+    if(hojaIzq==NULL&&hojaDer==NULL)
+    {
+      free(raiz);
+      return NULL;
+    }
+  }
+  else
+  {
+    return NULL;
+  }
+}
+
+int sustituye(Arbol raiz, char valor, char cambio)
+{
+  if(raiz!=NULL)
+  {
+    int resIzq=sustituye(raiz->izq,valor,cambio);
+    int resDer=sustituye(raiz->der,valor,cambio);
+    int cambios;
+    if(resIzq==-1&&resDer==-1)
+    {
+      cambios=0;
+    }else if(resDer>resIzq)
+    {
+      cambios=resDer;
+    }else if(resIzq>resDer)
+    {
+      cambios=resIzq;
+    }else if(resDer==resIzq)
+    {
+      cambios=resIzq;
+      //PODRIA SER resDer TAMBIEN
+    }
+
+    if(raiz->info==valor)
+    {
+      raiz->info=cambio;
+      cambios+=1;
+    }
+    return cambios;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+int numNodosHoja(Arbol raiz)
+{
+  if(raiz!=NULL)
+  {
+    int resIzq=numNodosHoja(raiz->izq);
+    int resDer=numNodosHoja(raiz->der);
+    int hojas=0;
+    if(resIzq==-1&&resDer==-1)
+    {
+      return 1;
+    } 
+    
+    if(resIzq!=-1)
+    {
+      hojas=hojas+resIzq;
+    }
+
+    if(resDer!=-1)
+    {
+      hojas=hojas+resDer;
+    }
+    return hojas;
+  }
+}
