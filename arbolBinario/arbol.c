@@ -233,16 +233,13 @@ int numHijoUnico(Arbol raiz)
   {
     int resIzq=numHijoUnico(raiz->izq);
     int resDer=numHijoUnico(raiz->der);
-    int numHijosUnicos=0;
     if(resIzq==-1&&resDer==0)
     {
-      numHijosUnicos=numHijosUnicos+resDer;
-      return numHijosUnicos+1;
+      return resDer+1;
     }
     else if(resIzq==0&&resDer==-1)
     {
-      numHijosUnicos=numHijosUnicos+resIzq;
-      return numHijosUnicos+1;
+      return resIzq+1;
     }else if(resIzq==-1&&resDer==-1){
       return 0;
     }
