@@ -192,4 +192,78 @@ int numNodosHoja(Arbol raiz)
     }
     return hojas;
   }
+  else
+  {
+    return -1;
+  }
+}
+
+int numNodosInternos(Arbol raiz)
+{
+  if(raiz!=NULL)
+  {
+    int resIzq=numNodosInternos(raiz->izq);
+    int resDer=numNodosInternos(raiz->der);
+    int numNodosInternos=0;
+    if(resIzq==-1&&resDer==-1)
+    {
+      //NO SOY NODO INTERNO, NO VALGO
+      return 0;
+    }else if(resIzq!=-1||resDer!=-1)
+    {
+      if(resIzq!=-1){
+        numNodosInternos=numNodosInternos+resIzq; 
+      }
+
+      if(resDer!=-1){
+        numNodosInternos=numNodosInternos+resDer;
+      }
+      return numNodosInternos+1;
+    }
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+int numHijoUnico(Arbol raiz)
+{
+  if(raiz!=NULL)
+  {
+    int resIzq=numHijoUnico(raiz->izq);
+    int resDer=numHijoUnico(raiz->der);
+    int numHijosUnicos=0;
+    if(resIzq==-1&&resDer==0)
+    {
+      numHijosUnicos=numHijosUnicos+resDer;
+      return numHijosUnicos+1;
+    }
+    else if(resIzq==0&&resDer==-1)
+    {
+      numHijosUnicos=numHijosUnicos+resIzq;
+      return numHijosUnicos+1;
+    }else if(resIzq==-1&&resDer==-1){
+      return 0;
+    }
+    else
+    {
+      if(resIzq>resDer){
+        return resIzq+1;
+      }
+      else if(resDer>resIzq)
+      {
+        return resDer+1;
+      }
+      else if(resDer==resIzq)
+      {
+        return resDer+1;
+        //SE PUEDE DEVOLVER TAMBIEN EL DE LA IZQUIERDA
+      }
+    }
+  }
+  else
+  {
+    return -1;
+  }
 }

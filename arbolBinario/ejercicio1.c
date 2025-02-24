@@ -16,7 +16,6 @@ int main(void)
   varArbol->der->der=creaNodo('G');
   varArbol->izq->der->izq=creaNodo('H');
   varArbol->der->der->der=creaNodo('J');
-  varArbol->der->der->der->izq=creaNodo('J');
 
 /* Aplicación de recorridos al arbol ejemplo */
 
@@ -42,10 +41,11 @@ int main(void)
   amplitud(varArbol);
   printf("\n");
   printf("Numero de hojas del arbol: %d\n", numNodosHoja(varArbol));
-   
+  printf("Numero de nodos internos: %d\n",numNodosInternos(varArbol));
+  printf("Numero de hijos unicos: %d\n", numHijoUnico(varArbol)-1);
   /*
   if(anula(varArbol)==NULL){
-    printf("Anulado con exito.\n");
+    printf("Anulado con exito.\n"); 
   }else
   {
     printf("Error al anular arbol.\n");
