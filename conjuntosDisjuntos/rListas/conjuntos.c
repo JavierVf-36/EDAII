@@ -6,9 +6,9 @@
 void crea(particion P)
 {
   tipoElemento i;
+  tipoCelda *nuevo;
   for(i=0;i<MAXIMO;i++)
   {
-    tipoCelda *nuevo;
     nuevo=malloc(sizeof(tipoCelda));
     if(nuevo==NULL)
     {
@@ -24,12 +24,36 @@ void crea(particion P)
 
 tipoConjunto buscar(tipoElemento x, particion P)
 {
-
-}
+  tipoConjunto i;
+  tipoCelda * aux;
+  for(i=0;i<MAXIMO;i++)
+  {
+    aux=P[i].primero;
+    while(aux!=NULL)
+    {
+      if(aux->elemento==x)
+      {
+        return i;
+      }
+        aux=aux->sig;
+    } 
+  }
+} 
 
 int unir(tipoConjunto x, tipoConjunto y, particion P)
 {
-
+  if(P[x].primero!=NULL)
+  {
+    P[x].ultimo->sig=P[y].primero;
+    P[x].ultimo=P[y].ultimo;
+    P[y].primero=NULL;
+    P[y].ultimo=NULL;
+    return 1;
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 
@@ -38,7 +62,7 @@ void verParticion(particion P)
    tipoCelda *aux;
     for (i =0;i<MAXIMO;i++) {
          aux = P[i].primero;
-         if (aux!=NULL)  printf("\n\nClase equivalencia representante %d: ",i);
+         if (aux!=NULL)  printf("\nClase equivalencia representante %d: ",i);
         while (aux!=NULL)
         { printf("%d ",aux->elemento);
          aux=aux->sig;
@@ -46,6 +70,8 @@ void verParticion(particion P)
     }
 }
 
+
+//Se mete en el representante del que has puesto, y muestra todos los nodos que haya
 void verClaseEquivalencia(tipoElemento x,particion P)
 { int representante;
   tipoCelda *aux;
@@ -57,5 +83,5 @@ void verClaseEquivalencia(tipoElemento x,particion P)
         { printf(" %d ",aux->elemento);
           aux=aux->sig;
         }
-    printf("\n\n");
+    printf("\n");
 }

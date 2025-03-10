@@ -19,9 +19,11 @@ int main()
 
 
 	crea(P);
+	printf("==================================================\n");
 	printf("Situacion INICIAL: \n");
+	printf("==================================================\n");
 	verParticion(P);
-
+	printf("\n==================================================\n");
 	// Se forman las siguientes clases de equivalencia haciendo al primer elemento del conjunto su representatne:
 	// {7,0,13,15},{2,3,8,12},{11,1,4,6,14},{9,5,10}
 
@@ -77,10 +79,19 @@ int main()
 	}
 	*/
 
-		
+	printf("\n==================================================\n");
 	printf("Situacion FINAL:   \n");
 	verParticion(P);
-	printf("El elemento 5 pertenence a la clase de equivalencia con representante %d\n",buscar(5,P));
+	printf("\n==================================================\n");
+
+	/*
+	//COMENTAR Y DESCOMENTAR ESTO PARA LAS LISTAS ENLAZADAS
+	for(int i=0;i<MAXIMO;i++)
+	{
+		verClaseEquivalencia(i,P);
+	}
+	*/
+
 
   	//Ejemplo con parametros incorrectos para relacionar el elemento 6 con el 15
 	printf("==================================================\n");
@@ -96,7 +107,7 @@ int main()
 	} 
 	printf("\nLa particion no ha cambiado...ERROR!!!\n   ");
 	verParticion(P);
-	printf("==================================================\n");
+	printf("\n==================================================\n");
 
 	//Para asegurar que los parametros son correctos mejor usar siempre  unir(buscar(x,P),buscar(y,P),P)
 	unir(buscar(6,P),buscar(15,P),P);
@@ -106,6 +117,8 @@ int main()
 	#ifdef LISTAS
 	verClaseEquivalencia(5,P);
 	#endif
+
+	
 
 	// �Qu� operaci�n ser�a necesaria para relacionar el elemento 12 con el 15?
 
