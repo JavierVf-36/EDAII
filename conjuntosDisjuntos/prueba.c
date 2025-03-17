@@ -85,7 +85,7 @@ int main()
 	printf("\n==================================================\n");
 
 	/*
-	//COMENTAR Y DESCOMENTAR ESTO PARA LAS LISTAS ENLAZADAS
+	//COMENTAR Y DESCOMENTAR ESTO SOLO PARA LAS LISTAS ENLAZADAS
 	for(int i=0;i<MAXIMO;i++)
 	{
 		verClaseEquivalencia(i,P);
