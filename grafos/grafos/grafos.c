@@ -9,24 +9,33 @@
 #include "cola.h"
 #include "grafos.h"
 /**********************************************
-/ Inicia correctamente directorio de vertices *
-***********************************************/
+/ Inicia correctamente directorio de vertices  /
+/**********************************************/
 void iniciar(tipoGrafo *g)
 {
+
+
 }
+
 void profundidadMejorado(int v_inicio,tipoGrafo *g)
 {
+
 }
+
 void amplitudMejorado(int v_inicio,tipoGrafo *g)
 {
-}
-/* Ejercicio 2*/
 
+}
+
+/* Ejercicio 2*/
 int ordenTop1(tipoGrafo *grafo)
 {
+  //PASAR EL PSEUDOCODIGO
 }
 int ordenTop2(tipoGrafo *grafo)
 {
+  //PASAR EL PSEUDOCODIGO
+  
 }
 /******************************************************************************/
 /* Recorrido en PROFUNDIDAD de un grafo. ¡CUIDADO! Depende del vertice inicial y del tipo de grafo */
@@ -81,20 +90,22 @@ void verGrafo(tipoGrafo *g)
    printf("     +----+----+----+----+----+----+\n");
 
    for(i=1;i<=g->orden;i++)
-   {  printf("  %2d | %2d | %2d | %2d |", i, g->directorio[i].alcanzado,
-                       g->directorio[i].gradoEntrada, g->directorio[i].ordenTop);
-       if (g->directorio[i].distancia == INF) printf("  * |");
-       else   printf(" %2d |", g->directorio[i].distancia);
-       if (g->directorio[i].peso == INF) printf("  * |");
-       else   printf(" %2d |", g->directorio[i].peso);
-       printf(" %2d |",g->directorio[i].anterior);
-       p = g->directorio[i].lista;
-       while (p != NULL)
-       {   printf(" ->%2d", p->v);	// Grafos no ponderados
-           //printf(" ->%2d, %2d", p->v, p->peso); // Grafos ponderados
-           p = p->sig;
-       }
-       printf("\n");
+   {  
+    printf("  %2d | %2d | %2d | %2d |", i, g->directorio[i].alcanzado,
+    g->directorio[i].gradoEntrada, g->directorio[i].ordenTop);
+    if (g->directorio[i].distancia == INF) printf("  * |");
+    else   printf(" %2d |", g->directorio[i].distancia);
+    if (g->directorio[i].peso == INF) printf("  * |");
+    else   printf(" %2d |", g->directorio[i].peso);
+    printf(" %2d |",g->directorio[i].anterior);
+    p = g->directorio[i].lista;
+    while (p != NULL)
+    {
+      printf(" ->%2d", p->v);	// Grafos no ponderados
+      //printf(" ->%2d, %2d", p->v, p->peso); // Grafos ponderados
+      p = p->sig;
+    }
+    printf("\n");
    }
    printf("     +----+----+----+----+----+----+\n\n");
 }

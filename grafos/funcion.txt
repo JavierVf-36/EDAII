@@ -1,1 +1,2 @@
 Recorrer lista de vertices e ir incrementando el grado de entrada en una unidad. Inicialmente estara todo el directorio de vertices con los valores adecuados para que se pueda ejecutar correctamente.
+Para la semana del 7 de abril: ejercicio1.c y ejercicio2.c

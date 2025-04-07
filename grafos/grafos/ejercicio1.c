@@ -17,19 +17,19 @@ tipoGrafo *creaGrafoT26();
 int main(void)
 { tipoGrafo *gT26;
   
-  	printf("\nSi el directorio de  vertices no se inicia correctamente los recorridos no funionan\n");
+  printf("\nSi el directorio de  vertices no se inicia correctamente los recorridos no funcionan\n");
 	gT26 = creaGrafoT26();
 	verGrafo(gT26);
-  	printf("\nProfundidad: ");
+  printf("\nProfundidad: ");
 	iniciar(gT26);
-  	profundidad(1,gT26);
-  	printf("\nProfundidad: ");	
+  profundidad(1,gT26);
+  printf("\nProfundidad: ");	
 	iniciar(gT26);
 	profundidad(1,gT26);
 	printf("\n\nIncluso iniciando correctamente directorio de vértices los recorridos depeden del vértice inicial y del tipo de grafo. ¡¡ Necesidad de mejorar los recorridos!! \n");
-  	printf("\nProfundidad: ");
+  printf("\nProfundidad: ");
 	iniciar(gT26);
-  	profundidad(6,gT26);
+  profundidad(6,gT26);
  	printf("\nAmplitud : ");
 	iniciar(gT26);
  	amplitud(1,gT26);
