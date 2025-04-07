@@ -1,0 +1,1 @@
+Recorrer lista de vertices e ir incrementando el grado de entrada en una unidad. Inicialmente estara todo el directorio de vertices con los valores adecuados para que se pueda ejecutar correctamente.
