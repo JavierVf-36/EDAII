@@ -1,9 +1,3 @@
-/*
- * grafos.c
- *
- *  Created on: 21/04/2014
- *      Author: MJ Polo
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include "cola.h"

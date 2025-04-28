@@ -14,7 +14,7 @@ int main(void)
 	gT47 = creaGrafoT47();
 	verGrafo(gT47);
   	printf("\nProfundidad: ");
-	iniciar(gT47);
+	iniciar(gT47); //IMPORTANTE
   	profundidadMejorado(5,gT47); 	// Se necesita profundidad mejorado!!!
  	printf("\nAmplitud : ");
  	amplitudMejorado(5,gT47);	// Se necesita amplitud mejorado!!

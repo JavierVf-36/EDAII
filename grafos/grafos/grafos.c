@@ -1,9 +1,3 @@
-/*
- * grafos.c
- *
- *  Created on: 21/04/2014
- *      Author: MJ Polo
- */
 #include <stdio.h>
 #include <stdlib.h>
 #include "cola.h"
@@ -13,8 +7,8 @@
 /**********************************************/
 void iniciar(tipoGrafo *g)
 {
-
-
+  int gEntrada[g->orden];
+  
 }
 
 void profundidadMejorado(int v_inicio,tipoGrafo *g)
@@ -30,11 +24,66 @@ void amplitudMejorado(int v_inicio,tipoGrafo *g)
 /* Ejercicio 2*/
 int ordenTop1(tipoGrafo *grafo)
 {
-  //PASAR EL PSEUDOCODIGO
+  int orden;
+  pArco p;
+  vertices v,w;
+  iniciar(grafo);
+  for(orden=1;orden<grafo->orden;orden++)
+  {
+    v=buscarVerticeGradoCeroNoOrdenTop(grafo);
+    if(v==-1)
+    {
+      printf("Error grafo ciclo\n");
+      fflush(stdout);
+      return v;
+    }
+    else
+    {
+      grafo->directorio[v].ordenTop1=orden;
+      p=grafo->directorio[w].lista;
+      while(p!=NULL)
+      {
+        w=p->v;
+        grafo->directorio[w].gradoEntrada=grafo->directorio[w].gradoEntrada-1;
+        p=p->sig;
+      }
+    }
+  }
 }
+
+
 int ordenTop2(tipoGrafo *grafo)
 {
-  //PASAR EL PSEUDOCODIGO
+  vertices v,w;
+  Cola c;
+  iniciar(grafo);
+  colaCreaVacia(&c);
+  for(v=1;v<grafo->orden;v++)
+  {
+    if(grafo->directorio[v].gradoEntrada==0)
+    {
+      colaInserta(&c,w);
+    }
+  }
+
+  orden=1;
+  while(!colaVacia(&c))
+  {
+    v=colaSuprime(&c);
+    grafo->directorio[v].ordenTop2=orden;
+    orden++;
+    pArco p=grafo->directorio[v].lista;
+    while(p!=NULL)
+    {
+      w=p->vertice;
+      grafo->directorio[w].gradoEntrada=grafo->directorio[w].gradoEntrada-1;
+      if(grafo->directorio[w].gradoEntrada==0)
+      {
+        colaInserta(&c,w);
+      }
+      p=p->sig;
+    }
+  }
   
 }
 /******************************************************************************/
