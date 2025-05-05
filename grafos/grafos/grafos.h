@@ -1,9 +1,3 @@
-/*
- * grafos.h
- *
- *  Created on: 21/04/2014
- *      Author: MJ Polo
- */
 #ifndef GRAFOS_H
 #define GRAFOS_H
 
@@ -34,7 +28,6 @@
   }tipoGrafo;
 
 void verGrafo(tipoGrafo *g);
-
 void liberarListas(tipoGrafo *g);
 
 /* Ejercicio 1*/
@@ -49,6 +42,7 @@ void amplitudMejorado(int v_inicio,tipoGrafo *grafo);
 
 int ordenTop1(tipoGrafo *grafo);
 int ordenTop2(tipoGrafo *grafo);
+int buscarVerticeGradoCeroNoOrdenTop(tipoGrafo *g);
 
 /* Ejercicio 3: Caminos mínimos en grafos dirigidos */
 /* a) NO Ponderados */

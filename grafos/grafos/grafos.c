@@ -7,7 +7,25 @@
 /**********************************************/
 void iniciar(tipoGrafo *g)
 {
-  int gEntrada[g->orden];
+  int i;
+  arco *aux;
+
+  for(i=0;i<g->orden;g++)
+  {
+    g->directorio[i].ordenTop=-1;
+    g->directorio[i].gradoEntrada=0;
+  }
+
+  //Volvemos a recorrer la lista entera
+  for(i=0;i<g->orden;i++)
+  {
+    aux=g->directorio[i].lista;
+    while(aux!=NULL)
+    {
+      g->directorio[aux->v].gradoEntrada;
+      aux=aux->sig;
+    }
+  }
   
 }
 
@@ -22,67 +40,83 @@ void amplitudMejorado(int v_inicio,tipoGrafo *g)
 }
 
 /* Ejercicio 2*/
-int ordenTop1(tipoGrafo *grafo)
+int ordenTop1(tipoGrafo *g)
 {
-  int orden;
-  pArco p;
-  vertices v,w;
-  iniciar(grafo);
-  for(orden=1;orden<grafo->orden;orden++)
+  int vActual;
+  pArco aux;
+  int ordenTop;
+
+  iniciar(g);
+  for(ordenTop=1;ordenTop<g->orden;ordenTop++)
   {
-    v=buscarVerticeGradoCeroNoOrdenTop(grafo);
-    if(v==-1)
+    vActual=buscarVerticeGradoCeroNoOrdenTop(g);
+    if(vActual==-1)
     {
-      printf("Error grafo ciclo\n");
-      fflush(stdout);
-      return v;
+      return -1;
     }
-    else
+
+    g->directorio[vActual].ordenTop=ordenTop;
+    aux=g->directorio[vActual].lista;
+    while(aux!=NULL)
     {
-      grafo->directorio[v].ordenTop1=orden;
-      p=grafo->directorio[w].lista;
-      while(p!=NULL)
-      {
-        w=p->v;
-        grafo->directorio[w].gradoEntrada=grafo->directorio[w].gradoEntrada-1;
-        p=p->sig;
-      }
+      g->directorio[aux->v].gradoEntrada--;
+      aux=aux->sig;
     }
   }
+  return 0;
+}
+
+int buscarVerticeGradoCeroNoOrdenTop(tipoGrafo *g)
+{ 
+  int i;
+  for(i=0;i<g->orden;i++)
+  {
+    if((g->directorio[i].ordenTop==-1)&&(g->directorio[i].gradoEntrada==0))
+    {
+      return i;
+    }
+  }
+  return -1;
 }
 
 
-int ordenTop2(tipoGrafo *grafo)
+int ordenTop2(tipoGrafo *g)
 {
-  vertices v,w;
+  int vActual;
+  pArco aux;
+  int i;
   Cola c;
-  iniciar(grafo);
+  iniciar(g);
   colaCreaVacia(&c);
-  for(v=1;v<grafo->orden;v++)
-  {
-    if(grafo->directorio[v].gradoEntrada==0)
-    {
-      colaInserta(&c,w);
-    }
-  }
 
-  orden=1;
-  while(!colaVacia(&c))
+  for(i=0;i<g->orden;i++)
   {
-    v=colaSuprime(&c);
-    grafo->directorio[v].ordenTop2=orden;
-    orden++;
-    pArco p=grafo->directorio[v].lista;
-    while(p!=NULL)
+    if(g->directorio[i].gradoEntrada==0)
     {
-      w=p->vertice;
-      grafo->directorio[w].gradoEntrada=grafo->directorio[w].gradoEntrada-1;
-      if(grafo->directorio[w].gradoEntrada==0)
-      {
-        colaInserta(&c,w);
-      }
-      p=p->sig;
+      colaInserta(&c,i);
     }
+    i=1;
+    while(!colaVacia(&c))
+    {
+      vActual=colaSuprime(&c);
+      g->directorio[i].ordenTop=i;
+      i++;
+      aux=g->directorio[vActual].lista;
+      while(aux!=NULL)
+      {
+        g->directorio[aux->v].gradoEntrada--;
+        if(g->directorio[aux->v].gradoEntrada==0)
+        {
+          colaInserta(&c,aux->v);
+        }
+        aux=aux->sig;
+      }
+    }
+    if(i<=g->orden)
+    {
+      return -1;
+    }
+    return 0;
   }
   
 }
@@ -113,17 +147,17 @@ void amplitud(int v_inicio,tipoGrafo *grafo)
   colaCreaVacia(&c);
   colaInserta(&c,v_inicio);
   while (!colaVacia(&c))  {
-	w =colaSuprime(&c);
-        if (!grafo->directorio[w].alcanzado) {
-		printf("%d ",w);
-	        grafo->directorio[w].alcanzado=1;
-        	p =grafo->directorio[w].lista;
- 		while (p!=NULL){
-			w = p->v;
-			colaInserta(&c,w);
-			p = p->sig;
-		}
-	}
+	  w =colaSuprime(&c);
+    if (!grafo->directorio[w].alcanzado) {
+		  printf("%d ",w);
+	    grafo->directorio[w].alcanzado=1;
+      p =grafo->directorio[w].lista;
+ 		  while (p!=NULL){
+			  w = p->v;
+			  colaInserta(&c,w);
+			  p = p->sig;
+		  }
+	  }
   }
 	  
 }
@@ -158,3 +192,38 @@ void verGrafo(tipoGrafo *g)
    }
    printf("     +----+----+----+----+----+----+\n\n");
 }
+
+/****************************************
+**              EJERCICIO 4             *
+*****************************************
+*/
+
+//Con solo pasarlo a pseudocodigo es suficiente.
+void aceptarArista()
+{
+  //Es un grafo dirigido. Tiene que aparecer en dos listas de adyacencia
+
+}
+
+tipoGrafo * prim1(tipoGrafo *grafo)
+{
+
+
+}
+
+tipoGrafo * prim2(tipoGrafo *grafo)
+{
+
+
+}
+
+
+tipoGrafo * kruskal(tipoGrafo *grafo)
+{
+
+
+}
+
+//A veces preguntan solo aceptar arista, otras el arbol de expansion,
+//otras preguntan como tiene que ser el tipo de dato monticulo
+//
