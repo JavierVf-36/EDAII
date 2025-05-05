@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "cola.h"
 #include "grafos.h"
+
 /**********************************************
 / Inicia correctamente directorio de vertices  /
 /**********************************************/
@@ -31,12 +32,28 @@ void iniciar(tipoGrafo *g)
 
 void profundidadMejorado(int v_inicio,tipoGrafo *g)
 {
-
+  int i;
+  profundidad(v_inicio,g);
+  for(i=0;i<g->orden;i++)
+  {
+    if(g->directorio[i].alcanzado==0)
+    {
+      profundidad(i,g);
+    }
+  }
 }
 
 void amplitudMejorado(int v_inicio,tipoGrafo *g)
 {
-
+  int i;
+  amplitud(v_inicio,g);
+  for(i=0;i<g->orden;i++)
+  {
+    if(g->directorio[i].alcanzado==0)
+    {
+      amplitud(i,g);
+    }
+  }
 }
 
 /* Ejercicio 2*/
@@ -120,9 +137,9 @@ int ordenTop2(tipoGrafo *g)
   }
   
 }
-/******************************************************************************/
+/***************************************************************************************************/
 /* Recorrido en PROFUNDIDAD de un grafo. ¡CUIDADO! Depende del vertice inicial y del tipo de grafo */
-/*********************************************************************************/
+/***************************************************************************************************/
 void profundidad(int v_inicio,tipoGrafo * grafo)
 { int w;
   pArco  p;
@@ -205,20 +222,43 @@ void aceptarArista()
 
 }
 
-tipoGrafo * prim1(tipoGrafo *grafo)
+tipoGrafo * prim1(int vInicio,tipoGrafo *g)
+{
+  pArco p;
+  int vActual;
+  iniciar(g);
+  int i;
+  g->directorio[vInicio].peso=0;
+  for(i=1;i<g->orden;i++)
+  {
+    vActual=buscarVerticeGradoCeroNoOrdenTop(g);
+    g->directorio[vActual].alcanzado=1;
+    p=g->directorio[vActual].lista;
+    while(p!=NULL)
+    {
+      p=p->sig;
+      if(g->directorio[p->v].alcanzado)
+      {
+        if(g->directorio[p->v].peso>p->peso)
+        {
+          g->directorio[p->v].peso=p->peso;
+          g->directorio[p->v].anterior=p->v;
+        }
+      }
+      p=p->sig;
+    }
+  }
+  return g;
+}
+
+tipoGrafo * prim2(int vInicio,tipoGrafo *g)
 {
 
 
 }
 
-tipoGrafo * prim2(tipoGrafo *grafo)
-{
 
-
-}
-
-
-tipoGrafo * kruskal(tipoGrafo *grafo)
+tipoGrafo * kruskal(int vInicio,tipoGrafo *g)
 {
 
 

@@ -39,7 +39,6 @@ void profundidadMejorado(int v_inicio,tipoGrafo *grafo);
 void amplitudMejorado(int v_inicio,tipoGrafo *grafo);
 
 /* Ejercicio 2*/
-
 int ordenTop1(tipoGrafo *grafo);
 int ordenTop2(tipoGrafo *grafo);
 int buscarVerticeGradoCeroNoOrdenTop(tipoGrafo *g);
@@ -61,9 +60,8 @@ void todosCaminosMin(int vIni, tipoGrafo *g);		 // Todos!!
 
 /* Ejercicio 4: Árbol de Expansión en grafos NO dirigidos */
 /* a) Prim  ¡ Algoritmo e interpretación del resultado!!! */
-tipoGrafo * prim1(tipoGrafo *grafo);
-tipoGrafo * prim2(tipoGrafo *grafo);
-/* c) Kruskal*/
-tipoGrafo * kruskal(tipoGrafo *grafo);
+tipoGrafo * prim1(int vInicio,tipoGrafo *g);
+tipoGrafo * prim2(int vInicio,tipoGrafo *);
+tipoGrafo * kruskal(int vInicio,tipoGrafo *);
 
 #endif
